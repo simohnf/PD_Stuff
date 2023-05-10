@@ -1,0 +1,99 @@
+#N canvas 0 23 1237 821 10;
+#X obj 37 37 inlet~;
+#X obj 37 436 cos~;
+#X obj 37 307 clip~ 0 1;
+#X obj 532 462 cos~;
+#X obj 532 368 clip~ 0 1;
+#X obj 532 400 *~ 0.25;
+#X obj 532 431 +~ 0.25;
+#X obj 37 366 *~ 0.25;
+#X obj 37 405 -~ 0.25;
+#X obj 546 288 - 1;
+#X obj 532 309 -~;
+#X obj 37 163 *~;
+#X text 35 16 phase (0--> 1);
+#X obj 204 37 inlet;
+#X text 194 16 phase period;
+#X obj 300 37 inlet;
+#X text 285 16 envelope length;
+#X obj 204 106 / 1, f 21;
+#X obj 300 77 t b f;
+#X text 221 126 nSegments;
+#X text 337 105 1 - This calculation gives us the number of times the
+length of our envelope fits into the phase loop. We use this to divide
+the phase ramp into n segments;
+#X obj 311 545 outlet~;
+#X text 362 543 Envelope out;
+#X text 41 244 ramp up;
+#X text 96 289 we only want to take the first segment of the ramp (now
+0--> nSegments) for out ramp up (i.e. attack);
+#X text 95 319 When clip~ receives signals above 1 it outputs 1;
+#X text 530 256 ramp down;
+#X text 572 279 we only want to take the last segment of the ramp (now
+0--> nSegments) for out ramp down (i.e. release);
+#X text 570 309 This looks complicated but essentially we are just
+shifting our ramp from a range of 0-->nSegments;
+#X text 569 330 to a new range of -1*(nSegments-1) --> 1;
+#X floatatom 975 297 5 0 10 0 - - -;
+#X obj 1029 353 - 1;
+#X obj 975 353 -;
+#X floatatom 975 374 5 0 0 0 - - -;
+#X msg 1028 322 10;
+#X obj 975 317 t f b;
+#X text 935 318 ---->;
+#X text 941 329 e.g.;
+#X text 1008 296 this goes from 0 --> 10;
+#X text 1012 374 this goes from -9 --> 1;
+#X text 598 366 When clip~ receives signals below 0 it outputs 0;
+#X text 588 398 We only want to read through 1/4 of the total phase
+of a cosine.;
+#X text 85 393 For our attack we want the final 1/4 when the wave goes
+from 0->1;
+#X text 86 357 We only want to read through 1/4 of the total phase
+of a cosine.;
+#X text 588 433 For our decay we want the second 1/4 when the wave
+goes from 0->-1;
+#X text 71 437 The signal here goes from minimum 0 to maximum 1;
+#X text 564 464 The signal here goes from maximum 0 to minimum -1;
+#X text 458 507 ramp up only changes during the first segment (when
+ramp down is at 0) ==> the sum of both is ramp up (going 0-->1) + ramp
+down (static 0). Anything + 0 is 0 ==> the output is the ramp up;
+#X text 457 561 ramp down only changes during the final segment (when
+ramp up is at 1) ==> the sum of both is ramp down (going 0--> -1) +
+ramp up (static 1). there fore the output is goes from 1 --> 0 as ramp
+down goes 0--> -1;
+#X text 1007 714 sjf \, SAE London \, 2020;
+#X text 821 14 This is a clever idea I stole from the grooveduck example
+in MaxMSP (which is by jhno I think...);
+#X text 821 38 It takes a phase ramp in (e.g. the full phase for reading
+a file from tabread~ \, and outputs a sine wave based amplitude ramp
+at the beginning and end;
+#X text 821 75 phase period and envelope lenth can be in samples or
+ms or s or hrs... as long as they are both given in the same unit;
+#X text 62 161 2 - by multiplying the ramp (0-->1) by nSegments \,
+we get a new ramp that goes 0 --> nSegments;
+#X connect 0 0 11 0;
+#X connect 1 0 21 0;
+#X connect 2 0 7 0;
+#X connect 3 0 21 0;
+#X connect 4 0 5 0;
+#X connect 5 0 6 0;
+#X connect 6 0 3 0;
+#X connect 7 0 8 0;
+#X connect 8 0 1 0;
+#X connect 9 0 10 1;
+#X connect 10 0 4 0;
+#X connect 11 0 2 0;
+#X connect 11 0 10 0;
+#X connect 13 0 17 0;
+#X connect 15 0 18 0;
+#X connect 17 0 9 0;
+#X connect 17 0 11 1;
+#X connect 18 0 17 0;
+#X connect 18 1 17 1;
+#X connect 30 0 35 0;
+#X connect 31 0 32 1;
+#X connect 32 0 33 0;
+#X connect 34 0 31 0;
+#X connect 35 0 32 0;
+#X connect 35 1 34 0;

@@ -1,0 +1,5 @@
+#N canvas 110 143 450 300 12;
+#X obj 37 37 inlet~;
+#X obj 44 160 outlet~;
+#X obj 55 99 r~ \$1-voiceOut-\$2;
+#X connect 2 0 1 0;

@@ -1,0 +1,48 @@
+#N canvas 543 23 731 481 10;
+#X obj 62 33 inlet;
+#X obj 62 54 t b;
+#X text 56 13 trigger;
+#X obj 155 35 inlet;
+#X text 147 12 range (max out + 1);
+#X obj 313 29 inlet;
+#X obj 313 50 t b;
+#X text 302 10 reset;
+#X obj 62 277 array random \$0-urn;
+#X obj 62 233 array max \$0-urn;
+#X obj 62 254 sel 1 0, f 53;
+#X obj 62 388 outlet;
+#X text 55 411 random out;
+#X obj 219 374 outlet;
+#X text 197 393 bang when done;
+#X obj 478 112 array define \$0-urn \$1;
+#X obj 187 77 array size \$0-urn;
+#X obj 155 56 t b f;
+#X obj 62 298 t f f;
+#X msg 89 319 0 \$1;
+#X obj 89 340 tabwrite \$0-urn;
+#X obj 236 169 int \$0;
+#X msg 236 190 \; \$1-urn const 1;
+#X text 536 425 sjf \, SAE London 2020;
+#X text 360 23 this patch uses "array random" to generate a non repeating
+series of random numbers;
+#X obj 276 136 loadbang;
+#X text 360 50 As a number is output its probability is set to 0 (therefore
+it will not be output again);
+#X text 355 75 When no option remains \, a bang is sent out the right
+outlet;
+#X connect 0 0 1 0;
+#X connect 1 0 9 0;
+#X connect 3 0 17 0;
+#X connect 5 0 6 0;
+#X connect 6 0 21 0;
+#X connect 8 0 18 0;
+#X connect 9 0 10 0;
+#X connect 10 0 8 0;
+#X connect 10 1 13 0;
+#X connect 17 0 21 0;
+#X connect 17 1 16 0;
+#X connect 18 0 11 0;
+#X connect 18 1 19 0;
+#X connect 19 0 20 0;
+#X connect 21 0 22 0;
+#X connect 25 0 21 0;
