@@ -1,0 +1,21 @@
+#N canvas 8 23 1304 779 12;
+#X obj 29 280 *~, f 25;
+#X text 215 278 multiplication controls amplitude;
+#X obj 201 116 vsl 20 60 0 127 0 0 empty empty vol 1 10 0 10 #fcfcfc
+#000000 #000000 0 1;
+#X obj 201 255 line~;
+#X obj 201 185 / 127;
+#X floatatom 201 208 5 0 0 0 - - - 0;
+#X msg 201 230 \$1 10;
+#X obj 29 253 inlet~;
+#X obj 29 312 outlet~;
+#X obj 201 66 inlet;
+#X connect 0 0 8 0;
+#X connect 2 0 4 0;
+#X connect 3 0 0 1;
+#X connect 4 0 5 0;
+#X connect 5 0 6 0;
+#X connect 6 0 3 0;
+#X connect 7 0 0 0;
+#X connect 9 0 2 0;
+#X coords 0 -1 1 1 50 80 1 200 100;

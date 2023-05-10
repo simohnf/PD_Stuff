@@ -1,0 +1,5 @@
+#N canvas 89 120 450 300 12;
+#X obj 37 37 inlet~;
+#X obj 44 160 outlet~;
+#X obj 55 68 s~ \$1-chanIn-\$2;
+#X connect 0 0 2 0;

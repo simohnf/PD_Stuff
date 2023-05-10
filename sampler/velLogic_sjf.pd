@@ -1,0 +1,10 @@
+#N canvas 614 34 450 300 12;
+#X obj 60 37 inlet;
+#X obj 60 61 tabread \$1;
+#X obj 60 85 min 127;
+#X obj 60 109 max 0;
+#X obj 60 133 outlet;
+#X connect 0 0 1 0;
+#X connect 1 0 2 0;
+#X connect 2 0 3 0;
+#X connect 3 0 4 0;

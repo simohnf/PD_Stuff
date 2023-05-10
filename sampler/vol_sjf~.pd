@@ -1,0 +1,17 @@
+#N canvas 383 442 755 381 12;
+#X obj 191 101 / 127;
+#X obj 191 125 pack 0 5;
+#X obj 191 149 line~;
+#X obj 47 173 *~, f 21;
+#X obj 47 197 outlet~;
+#X obj 191 79 r \$0-vol;
+#X obj 3 0 hsl 128 15 0 127 0 0 \$0-vol empty VOL 5 8 0 10 #fcfcfc
+#000000 #000000 0 1;
+#X obj 47 125 inlet~;
+#X connect 0 0 1 0;
+#X connect 1 0 2 0;
+#X connect 2 0 3 1;
+#X connect 3 0 4 0;
+#X connect 5 0 0 0;
+#X connect 7 0 3 0;
+#X coords 0 -1 1 1 133 15 2 0 0;

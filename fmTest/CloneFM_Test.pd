@@ -1,0 +1,11 @@
+#N canvas 2 25 1920 1035 12;
+#X floatatom 808 78 5 0 0 0 - - - 0;
+#X msg 807 117 vis \$1 1;
+#N canvas 0 22 450 278 (subpatch) 0;
+#X array \$0-ADSR 4 float 3;
+#A 0 0.4 0.885714 0.114286 0.392857;
+#X coords 0 1 4 0 200 140 1 0 0;
+#X restore 488 31 graph;
+#X obj 807 148 clone fmTest 16 \$0;
+#X connect 0 0 1 0;
+#X connect 1 0 3 0;

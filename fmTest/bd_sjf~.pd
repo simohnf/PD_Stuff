@@ -1,0 +1,53 @@
+#N canvas 3 27 1920 1035 12;
+#X obj 112 286 *~, f 11;
+#X obj 407 234 / 127;
+#X obj 407 257 pack 0 5;
+#X obj 407 280 line~;
+#X obj 410 214 hsl 128 15 0 127 0 0 empty empty empty -2 -8 0 10 #fcfcfc
+#000000 #000000 0 1;
+#X obj 108 90 vline~;
+#X obj 108 113 *~, f 15;
+#X obj 179 90 noise~;
+#X obj 247 91 / 127;
+#X obj 247 114 pack 0 5;
+#X obj 247 137 line~;
+#X obj 250 71 hsl 50 15 0 127 0 0 empty empty Beater 1 10 0 10 #fcfcfc
+#000000 #000000 0 1;
+#X obj 108 136 *~, f 18;
+#X obj 363 138 osc~;
+#X obj 363 161 *~, f 14;
+#X obj 396 51 vline~;
+#X msg 358 27 1 1 \, 0.1 20 1 \, 0 100 21;
+#X obj 109 26 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#000000;
+#X obj 364 114 +~ 50;
+#X obj 364 91 *~ 50, f 15;
+#X msg 109 52 0.1 1 \, 0 10 1;
+#X obj 112 315 outlet~;
+#X obj 105 3 inlet;
+#X text 605 71 Bass Drum \; Click of beater --> short transient \,
+noise \; Decending low pitched oscillator for boom;
+#X connect 0 0 21 0;
+#X connect 1 0 2 0;
+#X connect 2 0 3 0;
+#X connect 3 0 0 1;
+#X connect 4 0 1 0;
+#X connect 5 0 6 0;
+#X connect 6 0 12 0;
+#X connect 7 0 6 1;
+#X connect 8 0 9 0;
+#X connect 9 0 10 0;
+#X connect 10 0 12 1;
+#X connect 11 0 8 0;
+#X connect 12 0 0 0;
+#X connect 13 0 14 0;
+#X connect 14 0 0 0;
+#X connect 15 0 14 1;
+#X connect 15 0 19 0;
+#X connect 16 0 15 0;
+#X connect 17 0 20 0;
+#X connect 17 0 16 0;
+#X connect 18 0 13 0;
+#X connect 19 0 18 0;
+#X connect 20 0 5 0;
+#X connect 22 0 17 0;

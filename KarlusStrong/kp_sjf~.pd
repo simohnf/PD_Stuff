@@ -1,0 +1,120 @@
+#N canvas 509 23 1920 1035 12;
+#X text 291 -44 Physical Modelling Synthesis \; Karplus-Strong \; Model
+a vibrating string;
+#X obj 61 108 noise~;
+#X text 52 79 Acts as the pluck;
+#X obj 190 110 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc
+#000000 #000000;
+#X obj 163 191 vline~;
+#X obj 61 131 *~, f 9;
+#X obj 300 132 vsl 15 128 0 127 0 0 empty empty empty 0 -9 0 10 #fcfcfc
+#000000 #000000 0 1;
+#X obj 300 268 / 127;
+#X obj 300 314 line~;
+#X obj 61 448 *~;
+#X text 519 -45 Delayline acts as if noise is travelling the length
+of the string;
+#X obj 719 518 delwrite~ \$0-kp 500;
+#X obj 56 513 throw~ \$0-kpDelay, f 10;
+#X obj 1440 654 bng 500 250 50 0 empty empty empty 17 7 0 10 #fcfcfc
+#000000 #000000;
+#X obj 728 403 catch~ \$0-kpDelay;
+#X obj 416 525 vd~ \$0-kp 10;
+#X text 285 109 Pluck Level;
+#X obj 708 191 vsl 15 128 0.95 0.99 1 0 empty empty empty 0 -9 0 10
+#fcfcfc #000000 #000000 0 1;
+#X obj 708 350 pack 0 5;
+#X obj 708 373 line~;
+#X obj 679 445 *~;
+#X text 724 231 Sustain;
+#X obj 136 267 vsl 15 128 200 20000 1 0 empty empty Pluck\\\ Tone 0
+-9 0 10 #fcfcfc #000000 #000000 0 1;
+#X obj 48 400 lop~ 10000;
+#X obj 867 332 vsl 15 128 2000 20000 1 0 empty empty String\\\ Tone
+0 -9 0 10 #fcfcfc #000000 #000000 0 1;
+#X obj 740 484 lop~ 10000;
+#X floatatom 417 181 5 0 0 0 - - - 0;
+#X obj 417 203 mtof;
+#X obj 417 226 t b f, f 7;
+#X obj 417 272 /, f 7;
+#X floatatom 417 296 11 0 0 0 - - - 0;
+#X msg 417 249 1000;
+#X obj 417 316 pack 0 5;
+#X obj 417 339 line~;
+#X obj 515 360 osc~ 2;
+#X text 414 161 Pitch;
+#X obj 597 161 vsl 15 128 0.01 1 1 0 empty empty vibrato\\\ depth 0
+-9 0 10 #fcfcfc #000000 #000000 0 1;
+#X obj 621 301 pack 0 5;
+#X obj 621 324 line~;
+#X obj 515 383 *~, f 15;
+#X obj 515 406 expr~ $v1 * pow(2 \, 1/12), f 9;
+#X obj 499 470 *~;
+#X obj 526 152 vsl 15 128 0 20 0 0 empty empty Vibrato\\\ Rate 0 -9
+0 10 #fcfcfc #000000 #000000 0 1;
+#X msg 548 307 0.75;
+#X obj 190 130 t b b;
+#X msg 163 168 1 1 \, 0 5 1;
+#X obj 352 562 outlet~;
+#X obj 133 228 r \$1-pluckTone;
+#X obj 544 83 r \$1-vibRate;
+#X obj 626 111 r \$1-vibDepth;
+#X obj 716 149 r \$1-sus;
+#X obj 871 170 r \$1-stringTone;
+#X obj 187 12 inlet;
+#X obj 187 35 unpack;
+#X text 232 10 MIDI Note values in --> pitch (Left) Velocity (right)
+;
+#X obj 300 291 pack 0 1;
+#X connect 1 0 5 0;
+#X connect 3 0 44 0;
+#X connect 4 0 5 1;
+#X connect 5 0 23 0;
+#X connect 6 0 7 0;
+#X connect 7 0 55 0;
+#X connect 8 0 9 1;
+#X connect 9 0 12 0;
+#X connect 9 0 46 0;
+#X connect 14 0 25 0;
+#X connect 15 0 20 0;
+#X connect 15 0 46 0;
+#X connect 17 0 18 0;
+#X connect 18 0 19 0;
+#X connect 19 0 20 1;
+#X connect 20 0 25 0;
+#X connect 22 0 23 1;
+#X connect 23 0 9 0;
+#X connect 24 0 25 1;
+#X connect 25 0 11 0;
+#X connect 26 0 27 0;
+#X connect 27 0 28 0;
+#X connect 28 0 31 0;
+#X connect 28 1 29 1;
+#X connect 29 0 30 0;
+#X connect 30 0 32 0;
+#X connect 31 0 29 0;
+#X connect 32 0 33 0;
+#X connect 33 0 41 0;
+#X connect 33 0 15 0;
+#X connect 34 0 39 0;
+#X connect 36 0 37 0;
+#X connect 37 0 38 0;
+#X connect 38 0 39 1;
+#X connect 39 0 40 0;
+#X connect 40 0 41 1;
+#X connect 41 0 15 0;
+#X connect 42 0 34 0;
+#X connect 43 0 34 1;
+#X connect 44 0 45 0;
+#X connect 44 1 43 0;
+#X connect 45 0 4 0;
+#X connect 47 0 22 0;
+#X connect 48 0 42 0;
+#X connect 49 0 36 0;
+#X connect 50 0 17 0;
+#X connect 51 0 24 0;
+#X connect 52 0 53 0;
+#X connect 53 0 26 0;
+#X connect 53 0 3 0;
+#X connect 53 1 6 0;
+#X connect 55 0 8 0;
