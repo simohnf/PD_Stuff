@@ -1,0 +1,19 @@
+#N canvas 0 23 450 300 10;
+#X obj 47 121 *~, f 20;
+#X msg 202 67 \$1 50;
+#X obj 202 89 vline~;
+#X obj 205 55 hsl 60 10 0 1 0 0 empty empty volume -2 -8 0 10 -262144
+-1 -1 5000 1;
+#X obj 55 51 inlet~;
+#X obj 65 170 outlet~;
+#X obj 205 11 inlet;
+#X text 220 170 sjf \, SAE London \, \, 2020;
+#X obj 202 110 outlet~;
+#X connect 0 0 5 0;
+#X connect 1 0 2 0;
+#X connect 2 0 0 1;
+#X connect 2 0 8 0;
+#X connect 3 0 1 0;
+#X connect 4 0 0 0;
+#X connect 6 0 3 0;
+#X coords 0 -1 1 1 70 35 1 200 30;
